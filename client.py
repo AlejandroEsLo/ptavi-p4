@@ -11,14 +11,15 @@ import sys
 SERVER = 'localhost'
 IP = sys.argv[1]
 PORT = int(sys.argv[2])
-cadena = sys.argv[3:]
-LINE = ' '.join(cadena)
+METODO = sys.argv[3]
+DIRECCION = sys.argv[4]
 
 # Creamos el socket, lo configuramos y lo atamos a un servidor/puerto
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as my_socket:
     my_socket.connect((SERVER, PORT))
-    print("Enviando:", LINE)
-    my_socket.send(bytes(LINE, 'utf-8') + b'\r\n')
+    Mensaje = (METODO.upper() + " sip:" + DIRECCION + " SIP/2.0\r\n") 
+    print('Enviando: ', Mensaje)
+    my_socket.send(bytes(Mensaje, 'utf-8') + b'\r\n')
     data = my_socket.recv(1024)
     print('Recibido -- ', data.decode('utf-8'))
 
