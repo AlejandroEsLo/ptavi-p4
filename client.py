@@ -20,7 +20,7 @@ except IndexError:
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as my_socket:
     my_socket.connect((IP, PORT))
     Mensaje = (METODO.upper() + " sip:" + DIRECCION + " SIP/2.0\\r\\n\n" \
-                + "EXPIRES: "  + EXPIRES + "\\r\\n\\r\\n") 
+                + "EXPIRES: "  + EXPIRES + "\\r\\n") 
     print('Enviando: ', Mensaje)
     my_socket.send(bytes(Mensaje, 'utf-8') + b'\\r\\n')
     data = my_socket.recv(1024)
