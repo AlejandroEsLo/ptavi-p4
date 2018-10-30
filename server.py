@@ -50,7 +50,7 @@ class SIPRegisterHandler(socketserver.DatagramRequestHandler):
                 del self.list_clients[usuario]
 
         self.register2json()
-        self.wfile.write(b"SIP/2.0 200 OK\\r\\n\\r\\n")
+        self.wfile.write(b"SIP/2.0 200 OK\r\n\r\n")
 
         print("Lista clientes: {}".format(self.list_clients))
         print("Lista ELIMINADOS: {}\n".format(usuarios_expires))
